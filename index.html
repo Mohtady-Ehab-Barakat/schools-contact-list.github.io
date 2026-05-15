@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -17,21 +16,22 @@
 
 ```
 :root {
-  --bg:       #0c0c0e;
-  --surface:  #111114;
-  --border:   #222228;
-  --border2:  #2e2e38;
-  --text:     #e4e4f0;
-  --muted:    #6b6b80;
-  --dim:      #3a3a4a;
-  --green:    #34d399;
-  --green-bg: rgba(52,211,153,.12);
-  --green-bd: rgba(52,211,153,.3);
-  --amber:    #fbbf24;
-  --amber-bg: rgba(251,191,36,.1);
-  --amber-bd: rgba(251,191,36,.3);
-  --link:     #60a5fa;
-  --link-hov: #bfdbfe;
+  --bg:       #0d0d10;
+  --surface:  #13131a;
+  --border:   #28283a;
+  --border2:  #38384e;
+  --text:     #f2f2ff;
+  --sub:      #cacae0;
+  --muted:    #9898b8;
+  --dim:      #5a5a7a;
+  --green:    #4ade80;
+  --green-bg: rgba(74,222,128,.13);
+  --green-bd: rgba(74,222,128,.4);
+  --amber:    #fcd34d;
+  --amber-bg: rgba(252,211,77,.12);
+  --amber-bd: rgba(252,211,77,.4);
+  --link:     #7dd3fc;
+  --link-hov: #e0f2fe;
 }
 
 html { scroll-behavior: smooth; }
@@ -46,23 +46,20 @@ body {
   padding: 32px 24px 64px;
 }
 
-/* subtle grid bg */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
   background-size: 40px 40px;
-  opacity: .35;
   pointer-events: none;
   z-index: 0;
 }
 
 #root { position: relative; z-index: 1; max-width: 1600px; margin: 0 auto; }
 
-/* ── HEADER ── */
 .header { margin-bottom: 32px; }
 .header-eyebrow {
   font-family: 'IBM Plex Mono', monospace;
@@ -72,152 +69,142 @@ body::before {
   color: var(--muted);
   margin-bottom: 6px;
 }
-.header-title {
-  font-size: 26px;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: -.4px;
-}
+.header-title { font-size: 26px; font-weight: 600; color: #fff; letter-spacing: -.4px; }
 .header-sub { color: var(--muted); font-size: 12px; margin-top: 4px; }
 
 .legend { display: flex; gap: 20px; margin-top: 14px; }
-.legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; }
-.dot { width: 7px; height: 7px; border-radius: 50%; }
+.legend-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--sub); }
+.dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 .dot-green { background: var(--green); }
 .dot-amber { background: var(--amber); }
 
-/* ── SCROLL WRAPPER ── */
 .scroll-wrap {
   overflow-x: auto;
   border-radius: 12px;
   border: 1px solid var(--border2);
-  box-shadow: 0 0 0 1px rgba(255,255,255,.03), 0 24px 64px rgba(0,0,0,.6);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.04), 0 24px 64px rgba(0,0,0,.7);
 }
 .scroll-wrap::-webkit-scrollbar { height: 5px; background: var(--surface); }
-.scroll-wrap::-webkit-scrollbar-thumb { background: var(--dim); border-radius: 3px; }
+.scroll-wrap::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
 
-/* ── TABLE ── */
-table {
-  border-collapse: collapse;
-  width: 100%;
-  min-width: 1420px;
-}
+table { border-collapse: collapse; width: 100%; min-width: 1440px; }
 
-thead tr { background: var(--surface); border-bottom: 1px solid var(--border2); }
+thead tr { background: var(--surface); border-bottom: 2px solid var(--border2); }
 th {
-  padding: 12px 16px;
+  padding: 13px 16px;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 9px;
   letter-spacing: .22em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: #c0c0e0;
   text-align: left;
   white-space: nowrap;
-  font-weight: 600;
+  font-weight: 700;
 }
 th.sticky-col {
-  position: sticky;
-  left: 0;
+  position: sticky; left: 0;
   background: var(--surface);
   border-right: 1px solid var(--border2);
   z-index: 2;
 }
 
-tbody tr { transition: filter .15s ease; }
-tbody tr:hover { filter: brightness(1.12); }
+tbody tr { transition: filter .12s ease; }
+tbody tr:hover { filter: brightness(1.18); }
 
 td {
   padding: 16px;
   vertical-align: top;
   border-bottom: 1px solid var(--border);
   font-size: 12px;
-  color: #c8c8d8;
-  min-width: 160px;
+  color: var(--text);
+  min-width: 168px;
 }
 td.sticky-col {
-  position: sticky;
-  left: 0;
-  background: var(--bg);
+  position: sticky; left: 0;
   border-right: 1px solid var(--border2);
   z-index: 1;
-  min-width: 148px;
-  max-width: 148px;
+  min-width: 152px;
+  max-width: 152px;
 }
 tbody tr:last-child td { border-bottom: none; }
 
-/* school accent strips */
-.row-teal  td.sticky-col { border-left: 3px solid #2dd4bf; }
-.row-violet td.sticky-col { border-left: 3px solid #a78bfa; }
-.row-sky   td.sticky-col { border-left: 3px solid #38bdf8; }
-.row-rose  td.sticky-col { border-left: 3px solid #fb7185; }
+/* accent strips + sticky bg per row */
+.row-teal  td.sticky-col { border-left: 3px solid #2dd4bf; background: #0d1918; }
+.row-violet td.sticky-col { border-left: 3px solid #a78bfa; background: #12101e; }
+.row-sky   td.sticky-col { border-left: 3px solid #38bdf8; background: #0d151f; }
+.row-rose  td.sticky-col { border-left: 3px solid #fb7185; background: #1b0e13; }
 
-.row-teal  td { background: linear-gradient(90deg, rgba(45,212,191,.04) 0%, transparent 60%); }
-.row-violet td { background: linear-gradient(90deg, rgba(167,139,250,.04) 0%, transparent 60%); }
-.row-sky   td { background: linear-gradient(90deg, rgba(56,189,248,.04) 0%, transparent 60%); }
-.row-rose  td { background: linear-gradient(90deg, rgba(251,113,133,.04) 0%, transparent 60%); }
+/* row body — VERY subtle tint, won't kill contrast */
+.row-teal  td { background: #0f1412; }
+.row-violet td { background: #100f16; }
+.row-sky   td { background: #0e1218; }
+.row-rose  td { background: #140e10; }
 
-.row-teal  td.sticky-col { background: rgba(45,212,191,.06); }
-.row-violet td.sticky-col { background: rgba(167,139,250,.06); }
-.row-sky   td.sticky-col { background: rgba(56,189,248,.06); }
-.row-rose  td.sticky-col { background: rgba(251,113,133,.06); }
+/* sticky col overrides (must come after row-X td) */
+.row-teal  td.sticky-col { background: #0d1918; }
+.row-violet td.sticky-col { background: #12101e; }
+.row-sky   td.sticky-col { background: #0d151f; }
+.row-rose  td.sticky-col { background: #1b0e13; }
 
-/* school name cell */
-.school-name { font-weight: 600; color: #fff; font-size: 13px; line-height: 1.3; }
-.school-note { color: var(--muted); font-size: 10px; margin-top: 2px; line-height: 1.4; }
+.school-name { font-weight: 700; color: #ffffff; font-size: 13px; line-height: 1.3; }
+.school-note { color: var(--muted); font-size: 10px; margin-top: 3px; line-height: 1.4; }
 
-/* cell internals */
 .entry { margin-bottom: 10px; }
 .entry:last-child { margin-bottom: 0; }
-.entry-name { font-weight: 600; color: #e8e8f5; font-size: 12px; }
-.entry-title { color: var(--muted); font-size: 10px; line-height: 1.4; margin-top: 1px; }
-.entry-title.highlight { color: #fbbf24; font-weight: 500; }
+.entry-name { font-weight: 600; color: #ffffff; font-size: 12px; }
+.entry-title { color: var(--sub); font-size: 11px; line-height: 1.4; margin-top: 1px; }
+.entry-title.star { color: #fcd34d; font-weight: 600; }
 
-.item { display: flex; flex-direction: column; gap: 2px; margin-bottom: 7px; }
+.item { margin-bottom: 7px; }
 .item:last-child { margin-bottom: 0; }
 .item-row { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; }
-.item-value { color: #c8c8d8; font-size: 11.5px; word-break: break-all; }
-.item-note { color: var(--muted); font-style: italic; font-size: 10px; }
+.item-value { color: #f0f0ff; font-size: 12px; word-break: break-all; }
+.item-note {
+  color: var(--muted);
+  font-style: italic;
+  font-size: 11px;
+  line-height: 1.5;
+  margin-bottom: 5px;
+}
+.item-note:last-child { margin-bottom: 0; }
 
 a.ext-link {
   color: var(--link);
   text-decoration: underline;
   text-underline-offset: 2px;
-  font-size: 11.5px;
+  font-size: 12px;
   word-break: break-all;
-  transition: color .12s;
+  transition: color .1s;
 }
 a.ext-link:hover { color: var(--link-hov); }
 
-/* badges */
 .badge {
-  display: inline-block;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 9px;
   font-weight: 700;
-  letter-spacing: .06em;
-  padding: 2px 5px;
+  letter-spacing: .05em;
+  padding: 2px 6px;
   border-radius: 3px;
   white-space: nowrap;
   flex-shrink: 0;
+  display: inline-block;
 }
 .badge-confirmed { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-bd); }
 .badge-inferred  { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-bd); }
 
-/* footer */
 .footer {
   margin-top: 16px;
   font-size: 10px;
   color: var(--dim);
-  line-height: 1.7;
+  line-height: 1.8;
   font-family: 'IBM Plex Mono', monospace;
 }
 
-/* fade-in rows */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-tbody tr { animation: fadeUp .4s ease both; }
+tbody tr { animation: fadeUp .35s ease both; }
 tbody tr:nth-child(1) { animation-delay: .05s; }
 tbody tr:nth-child(2) { animation-delay: .12s; }
 tbody tr:nth-child(3) { animation-delay: .19s; }
@@ -232,11 +219,10 @@ tbody tr:nth-child(4) { animation-delay: .26s; }
 <script type="text/babel">
 const { createElement: h, Fragment } = React;
 
-const Badge = ({ type }) => {
-  const cls = type === 'confirmed' ? 'badge badge-confirmed' : 'badge badge-inferred';
-  const label = type === 'confirmed' ? '✓ confirmed' : '~ inferred';
-  return h('span', { className: cls }, label);
-};
+const Badge = ({ type }) =>
+  h('span', { className: `badge badge-${type}` },
+    type === 'confirmed' ? '✓ confirmed' : '~ inferred'
+  );
 
 const ExtLink = ({ href, label }) =>
   h('a', { className: 'ext-link', href, target: '_blank', rel: 'noreferrer' }, label);
@@ -257,20 +243,21 @@ const schools = [
   {
     row: 'row-teal',
     name: 'Abedeen Academy',
-    note: 'International & Private schools',
+    note: 'International & Private Schools',
     contacts: [
       { name: 'Qutren Nada Ahmad', title: 'CEO & Founder' },
-      { name: 'Mr Ismuie bin Dato\u2019 Ismail', title: 'Acting Principal (as of 2023\u201324 \u2014 verify current)' },
+      { name: 'Mr Ismuie bin Dato\u2019 Ismail', title: 'Acting Principal (2023\u201324 \u2014 verify current)' },
     ],
     personalEmail: [
-      { value: 'No personal email published publicly', isNote: true },
+      { value: 'No personal emails published publicly', isNote: true },
       { value: 'admin@abedeen.edu.my routes to leadership', status: 'confirmed' },
     ],
     phone: [
       { value: '+603-8687 6999', status: 'confirmed' },
     ],
     whatsapp: [
-      { value: '+6016-261 2846 (click-to-WhatsApp on site)', status: 'confirmed' },
+      { value: '+6016-261 2846', status: 'confirmed' },
+      { value: 'Click-to-WhatsApp link on official contact page', isNote: true },
     ],
     linkedin: [
       { value: 'Abedeen Academy (company page)', isLink: true, href: 'https://www.linkedin.com/company/abedeen-academy-private-international-school', status: 'confirmed' },
@@ -305,12 +292,13 @@ const schools = [
       { value: 'Format confirmed: firstname@brainybunch.com', isNote: true },
     ],
     phone: [
-      { value: '+6012-777 3849 (BBIS Registrar, Cyberjaya)', status: 'confirmed' },
+      { value: '+6012-777 3849 (BBIS Registrar)', status: 'confirmed' },
       { value: '016-229 4314 (Raudhah City campus)', status: 'confirmed' },
-      { value: '1800-28-2800 (national toll-free)', status: 'confirmed' },
+      { value: '1800-28-2800 (toll-free)', status: 'confirmed' },
     ],
     whatsapp: [
-      { value: '+6012-777 3849 (call or WhatsApp)', status: 'confirmed' },
+      { value: '+6012-777 3849', status: 'confirmed' },
+      { value: 'Same as BBIS Registrar line', isNote: true },
     ],
     linkedin: [
       { value: 'Coach Fadzil Hashim (Founder)', isLink: true, href: 'https://www.linkedin.com/in/coachfadzil/', status: 'confirmed' },
@@ -326,11 +314,11 @@ const schools = [
       { value: 'Facebook (school)', isLink: true, href: 'https://www.facebook.com/BrainyBunchInternationalSchool/' },
       { value: 'Facebook @coachfadzil (Founder)', isLink: true, href: 'https://www.facebook.com/coachfadzil/' },
       { value: 'TikTok @brainybunchofficial', isLink: true, href: 'https://www.tiktok.com/@brainybunchofficial' },
-      { value: 'Twitter/X: @BrainyBunchHQ', isNote: true },
     ],
     other: [
       { value: 'bbis.edu.my/contact-us \u2014 enquiry form', isNote: true },
-      { value: 'brainybunch.com/contact-hq \u2014 HQ contact page', isNote: true },
+      { value: 'brainybunch.com/contact-hq \u2014 HQ contact', isNote: true },
+      { value: 'Twitter/X: @BrainyBunchHQ', isNote: true },
     ],
   },
   {
@@ -338,19 +326,20 @@ const schools = [
     name: 'elc International School',
     note: 'Cyberjaya Campus',
     contacts: [
-      { name: 'Ms. Kothai Chidambaram', title: 'Principal, Cyberjaya Campus (since 2019) \u2014 BBM, CIDTT, MEd' },
+      { name: 'Ms. Kothai Chidambaram', title: 'Principal, Cyberjaya (since 2019) \u2014 BBM, CIDTT, MEd' },
       { name: 'Mr Kumar Nagappan', title: 'Senior Management Committee' },
     ],
     personalEmail: [
-      { value: 'No personal emails published \u2014 role-based aliases only', isNote: true },
+      { value: 'No personal emails published \u2014 role aliases only', isNote: true },
     ],
     phone: [
       { value: '+603-8319 1641 (main)', status: 'confirmed' },
-      { value: '+603-8319 1642 (alt line)', status: 'confirmed' },
+      { value: '+603-8319 1642 (alt)', status: 'confirmed' },
       { value: '+603-8319 1643 (fax)', status: 'confirmed' },
     ],
     whatsapp: [
-      { value: 'No WhatsApp number published. "Book A Tour" form lets you select WhatsApp as preferred contact method.', isNote: true },
+      { value: 'No WhatsApp number published', isNote: true },
+      { value: '"Book A Tour" form has WhatsApp as a contact option', isNote: true },
     ],
     linkedin: [
       { value: 'elc International School (school page)', isLink: true, href: 'https://www.linkedin.com/school/elc-international-school/', status: 'confirmed' },
@@ -361,7 +350,7 @@ const schools = [
       { value: 'recruitment@elc.edu.my (whole school)', status: 'confirmed' },
     ],
     social: [
-      { value: 'Instagram @elcschoolcj (Cyberjaya)', isLink: true, href: 'https://www.instagram.com/elcschoolcj/' },
+      { value: 'Instagram @elcschoolcj', isLink: true, href: 'https://www.instagram.com/elcschoolcj/' },
       { value: 'Facebook (Cyberjaya)', isLink: true, href: 'https://www.facebook.com/elc.cyberjaya/' },
     ],
     other: [
@@ -375,17 +364,17 @@ const schools = [
     name: 'King Henry VIII College',
     note: 'KH8 \u2014 Cyberjaya',
     contacts: [
-      { name: 'Ck Chew', title: '\u2605 Head of Business Development & Marketing \u2014 best B2B door' },
+      { name: 'Ck Chew', title: '\u2605 Head of Business Dev & Marketing \u2014 best B2B door', star: true },
       { name: 'Jia Yi Wong', title: 'Business Development Manager' },
       { name: 'Martin Davis', title: 'Head of School' },
       { name: 'Dina Asnani', title: 'Registrar & Head of Admissions' },
     ],
     personalEmail: [
-      { value: 'ck.chew@kinghenryviii.edu.my (or c.chew@\u2026)', status: 'inferred' },
+      { value: 'ck.chew@kinghenryviii.edu.my', status: 'inferred' },
       { value: 'jiayi.w@kinghenryviii.edu.my', status: 'inferred' },
       { value: 'm.davis@kinghenryviii.edu.my', status: 'inferred' },
       { value: 'd.asnani@kinghenryviii.edu.my', status: 'inferred' },
-      { value: 'Format: first.lastinitial@kinghenryviii.edu.my (100% of staff per RocketReach)', isNote: true },
+      { value: 'Format: first.lastinitial@kinghenryviii.edu.my (RocketReach, 100% of staff)', isNote: true },
     ],
     phone: [
       { value: '+603-8800 9888 (main)', status: 'confirmed' },
@@ -408,8 +397,8 @@ const schools = [
       { value: 'Facebook KH8Malaysia', isLink: true, href: 'https://www.facebook.com/KH8Malaysia/' },
     ],
     other: [
-      { value: 'Admissions form: kinghenryviii.edu.my/admissions/', isNote: true },
-      { value: 'STEM in: mention Andrew Kirkbride (Maths & CS teacher) in pitch', isNote: true },
+      { value: 'Admissions: kinghenryviii.edu.my/admissions/', isNote: true },
+      { value: 'STEM angle: mention Andrew Kirkbride (Maths & CS teacher)', isNote: true },
       { value: 'Office hours: Mon\u2013Fri ~07:50\u201316:30', isNote: true },
     ],
   },
@@ -429,12 +418,18 @@ const COLS = [
 function App() {
   return h(Fragment, null,
     h('div', { className: 'header' },
-      h('div', { className: 'header-eyebrow' }, 'OrbiTutor — B2B Outreach Intelligence · OrbitCore Sdn. Bhd.'),
+      h('div', { className: 'header-eyebrow' }, 'OrbiTutor \u2014 B2B Outreach Intelligence \u00b7 OrbitCore Sdn. Bhd.'),
       h('h1', { className: 'header-title' }, 'Cyberjaya International Schools'),
-      h('p', { className: 'header-sub' }, '4 schools · Contact matrix · May 2026'),
+      h('p', { className: 'header-sub' }, '4 schools \u00b7 Contact matrix \u00b7 May 2026'),
       h('div', { className: 'legend' },
-        h('div', { className: 'legend-item' }, h('span', { className: 'dot dot-green' }), h('span', { style: {color:'#34d399'} }, 'Confirmed')),
-        h('div', { className: 'legend-item' }, h('span', { className: 'dot dot-amber' }), h('span', { style: {color:'#fbbf24'} }, 'Inferred from email format')),
+        h('div', { className: 'legend-item' },
+          h('span', { className: 'dot dot-green' }),
+          h('span', null, 'Confirmed source')
+        ),
+        h('div', { className: 'legend-item' },
+          h('span', { className: 'dot dot-amber' }),
+          h('span', null, 'Inferred from email format \u2014 verify before sending')
+        ),
       )
     ),
 
@@ -449,23 +444,21 @@ function App() {
         h('tbody', null,
           schools.map((s, si) =>
             h('tr', { key: si, className: s.row },
-              // sticky school name
+
               h('td', { className: 'sticky-col' },
                 h('div', { className: 'school-name' }, s.name),
                 h('div', { className: 'school-note' }, s.note),
               ),
 
-              // contacts
               h('td', null,
                 s.contacts.map((c, ci) =>
                   h('div', { key: ci, className: 'entry' },
                     h('div', { className: 'entry-name' }, c.name),
-                    h('div', { className: `entry-title${c.title.startsWith('\u2605') ? ' highlight' : ''}` }, c.title),
+                    h('div', { className: `entry-title${c.star ? ' star' : ''}` }, c.title),
                   )
                 )
               ),
 
-              // all other cols
               COLS.slice(1).map(col =>
                 h('td', { key: col.key },
                   s[col.key].map((item, ii) =>
@@ -480,9 +473,7 @@ function App() {
     ),
 
     h('div', { className: 'footer' },
-      'Sources: school websites, LinkedIn, Facebook, The Org, ZoomInfo, RocketReach, SignalHire · ',
-      'Inferred emails derived from confirmed first.last@domain patterns — verify before bulk use · ',
-      'Generated May 2026 for OrbiTutor / OrbitCore Sdn. Bhd.'
+      'Sources: school websites \u00b7 LinkedIn \u00b7 Facebook \u00b7 The Org \u00b7 ZoomInfo \u00b7 RocketReach \u00b7 SignalHire\u2003|\u2003Generated May 2026 for OrbiTutor / OrbitCore Sdn. Bhd.'
     )
   );
 }
